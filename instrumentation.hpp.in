@@ -1,0 +1,26 @@
+#ifndef INTRUMENTATION_INCLUDED_HPP_
+#define INTRUMENTATION_INCLUDED_HPP_
+
+#cmakedefine ENABLE_TRACY_INSTRUMENTATION
+#cmakedefine USE_OLD_INCLUDE_PATH
+
+#ifdef ENABLE_TRACY_INSTRUMENTATION
+
+#ifdef USE_OLD_INCLUDE_PATH
+#include "Tracy.hpp"
+#else
+#include "tracy/Tracy.hpp"
+#endif
+
+#define FRAME_MARKER  FrameMark; (void)0
+#define MEASURE_SCOPE ZoneScoped; (void)0
+
+#else
+
+#define FRAME_MARKER (void)0
+#define MEASURE_SCOPE (void)0
+
+#endif
+
+
+#endif /* INTRUMENTATION_INCLUDED_HPP_ */
